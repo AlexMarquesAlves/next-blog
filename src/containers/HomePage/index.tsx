@@ -5,7 +5,7 @@ import { MainContainer } from "../../components/MainContainer";
 import { PostCard } from "../../components/PostCard";
 import { SITE_NAME } from "../../config/app-config";
 import { PostData } from "../../domain/posts/types";
-import { Container } from "./styles";
+import { Category, Container } from "./styles";
 
 export type HomePageProps = {
   posts: PostData[];
@@ -21,7 +21,7 @@ export const HomePage = ({ posts, category }: HomePageProps) => {
       </Head>
       <Header />
 
-      {category && <div>Categoria: {category}</div>}
+      {category && <Category>Categoria: {category}</Category>}
 
       <MainContainer>
         <Container>
