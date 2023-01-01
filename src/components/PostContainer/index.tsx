@@ -1,9 +1,9 @@
-import { Container } from './styles';
+import { Container } from "./styles";
 
-export const PostContainer = () => {
-  return (
-    <Container>
-      <h1>PostContainer</h1>
-    </Container>
-  );
+export type PostContainerProps = {
+  content: string;
+};
+
+export const PostContainer = ({ content }: PostContainerProps) => {
+  return <Container dangerouslySetInnerHTML={{ __html: content }} />;
 };
