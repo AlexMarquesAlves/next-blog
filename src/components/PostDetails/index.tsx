@@ -1,9 +1,16 @@
-import { Container } from './styles';
+import { Date } from "../Date";
+import { Container } from "./styles";
 
-export const PostDetails = () => {
+export type PostDetailsProps = {
+  date: string;
+  author: string;
+  category: string;
+};
+
+export const PostDetails = ({ author, date, category }: PostDetailsProps) => {
   return (
     <Container>
-      <h1>PostDetails</h1>
+      Publicado por <Date date={date} /> por {author} em {category}
     </Container>
   );
 };
