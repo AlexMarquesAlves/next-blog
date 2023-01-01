@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header";
 import { MainContainer } from "../../components/MainContainer";
+import { PostCard } from "../../components/PostCard";
 import { PostData } from "../../domain/posts/types";
 import { HomeProps } from "../../pages";
 import { Container } from "./styles";
@@ -15,7 +16,12 @@ export const HomePage = ({ posts }: HomeProps) => {
       <MainContainer>
         <Container>
           {posts.map((post) => (
-            <h2 key={post.slug}>{post.title}</h2>
+            <PostCard
+              key={post.slug}
+              cover={post.cover.formats.small.url}
+              slug={post.slug}
+              title={post.title}
+            />
           ))}
         </Container>
       </MainContainer>
