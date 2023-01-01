@@ -1,9 +1,10 @@
-import { Container } from './styles';
+import { formatDate } from "../../utils/format-date";
+import { Container } from "./styles";
 
-export const Date = () => {
-  return (
-    <Container>
-      <h1>Date</h1>
-    </Container>
-  );
+export type DateProps = {
+  date: string;
+};
+
+export const Date = ({ date }: DateProps) => {
+  return <Container>{formatDate(date)}</Container>;
 };
