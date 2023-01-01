@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Container, PostCardCover, PostCardHeading } from "./styles";
 
@@ -12,9 +12,10 @@ export const PostCard = ({ slug, title, cover }: PostCardProps) => {
     <Container>
       <PostCardCover>
         <Link href={"/post/[slug]"} as={`/post/${slug}`}>
-          <Image src={cover} alt={title} />
+          <img src={cover} alt={title} />
         </Link>
       </PostCardCover>
+
       <PostCardHeading>
         <Link href={"/post/[slug]"} as={`/post/${slug}`}>
           {title}
