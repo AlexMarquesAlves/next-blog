@@ -1,9 +1,10 @@
+import { ReactNode } from "react";
 import { Container } from "./styles";
 
-export const Heading = () => {
-  return (
-    <Container>
-      <h1>Heading</h1>
-    </Container>
-  );
+export type HeadingProps = {
+  children: ReactNode;
+};
+
+export const Heading = ({ children }: HeadingProps) => {
+  return <Container>{children}</Container>;
 };
