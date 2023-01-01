@@ -1,9 +1,10 @@
 import { Container } from "./styles";
 
-export const PostCover = () => {
-  return (
-    <Container>
-      <h1>PostCover</h1>
-    </Container>
-  );
+export type PostCoverProps = {
+  coverUrl: string;
+  alt: string;
+};
+
+export const PostCover = ({ coverUrl, alt }: PostCoverProps) => {
+  return <Container src={coverUrl} alt={alt} />;
 };
