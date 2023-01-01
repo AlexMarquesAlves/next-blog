@@ -1,9 +1,10 @@
+import React from "react";
 import { Container } from "./styles";
 
-export const MainContainer = () => {
-  return (
-    <Container>
-      <h1>MainContainer</h1>
-    </Container>
-  );
+export type MainContainerProps = {
+  children: React.ReactNode;
+};
+
+export const MainContainer = ({ children }: MainContainerProps) => {
+  return <Container>{children}</Container>;
 };
