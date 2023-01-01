@@ -30,7 +30,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getStaticProps: GetStaticProps = async (ctx: any) => {
   const posts = await getPost(ctx.params.slug);
 
   return {
