@@ -1,5 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-
+export const Container = styled.section`
+  ${({ theme }) => css`
+    margin: ${theme.spacings.superLarge} 0;
+  `}
 `;
