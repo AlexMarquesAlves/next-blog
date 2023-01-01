@@ -1,6 +1,6 @@
 import { POSTS_URL } from "../../config/app-config";
 import { PostData } from "../../domain/posts/types";
-import { fetchJson } from "../../utils/fectch-json";
+import { fetchJson } from "../../utils/fetch-json";
 
 export const getAllPosts = async (query = ""): Promise<PostData[]> => {
   const url = `${POSTS_URL}?&${query}`;
