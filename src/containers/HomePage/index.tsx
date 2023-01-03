@@ -4,12 +4,14 @@ import { Header } from "../../components/Header";
 import { MainContainer } from "../../components/MainContainer";
 import { PostCard } from "../../components/PostCard";
 import { SITE_NAME } from "../../config/app-config";
+import { PaginationData } from "../../domain/posts/paginationTypes";
 import { PostData } from "../../domain/posts/types";
 import { Category, Container } from "./styles";
 
 export type HomePageProps = {
   posts: PostData[];
   category?: string;
+  pagination?: PaginationData;
 };
 
 export const HomePage = ({ posts, category }: HomePageProps) => {
