@@ -14,3 +14,11 @@ export const Category = styled.div`
     padding: ${theme.spacings.medium} 0;
   `}
 `;
+
+export const AllPostsLinks = styled.div`
+  ${({ theme }) => css`
+    display: block;
+    text-align: center;
+    margin: ${theme.spacings.large};
+  `}
+`;

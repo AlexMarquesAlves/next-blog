@@ -1,4 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Error from "next/error";
+import { useRouter } from "next/router";
 import { Post } from "../../containers/Post";
 import { getAllPosts, getPost } from "../../data/posts";
 import { countAllPosts } from "../../data/posts/count-all-posts";
@@ -9,6 +11,16 @@ export type DynamicPostProps = {
 };
 
 const DynamicPost = ({ post }: DynamicPostProps) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Página ainda carregando, por favor aguarde...</div>;
+  }
+
+  if (!post) {
+    return <Error statusCode={404} />;
+  }
+
   return <Post post={post} />;
 };
 
@@ -26,16 +38,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
         },
       };
     }),
-    fallback: false,
+    fallback: true,
   };
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getStaticProps: GetStaticProps = async (ctx: any) => {
   const posts = await getPost(ctx.params.slug);
+  const post = posts.length > 0 ? posts[0] : {};
+
 
   return {
-    props: { post: posts[0] },
-    // revalidate: 5,
+    props: { post: post },
+    revalidate: 600,
   };
 };
