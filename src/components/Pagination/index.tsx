@@ -1,14 +1,27 @@
-import * as Styled from './styles';
+import Link from 'next/link';
+import { PaginationData } from '../../domain/posts/paginationTypes';
+import { Container, NextLink, PreviousLink } from './styles';
 
-export type PaginationProps = {
-  title?: string;
-};
+export type PaginationProps = PaginationData;
 
-export const Pagination = ({ title }: PaginationProps) => {
-  return (
-    <Styled.Wrapper>
-      <h1>Oi</h1>
-      <p>{title}</p>
-    </Styled.Wrapper>
-  );
+export const Pagination = ({ nextPage, numberOfPosts, postsPerPage, previousPage, category }: PaginationProps) => {
+  const categoryName = category || ``;
+  const nextLink = `/post/page/${nextPage}/${categoryName}`;
+  const previousLink = `/post/page/${previousPage}/${categoryName}`;
+  const hasNextPage = nextPage * postsPerPage < postsPerPage + numberOfPosts;
+  const hasPreviousPage = previousPage >= 1;
+
+  return <Container>
+    {hasPreviousPage && (
+      <PreviousLink>
+        <Link as={previousLink} href={'/post/page/[...param]'}>Previous</Link>
+      </PreviousLink>
+    )}
+
+    {hasNextPage && (
+      <NextLink>
+        <Link as={nextLink} href={'/post/page/[...param]'}>Next</Link>
+      </NextLink>
+    )}
+  </Container>
 };
